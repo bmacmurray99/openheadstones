@@ -136,6 +136,9 @@
 .markdown-content code { background: #333; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.85em; }
 .markdown-content a { color: var(--accent); text-decoration: underline; }
 .markdown-content blockquote { border-left: 3px solid var(--border); padding-left: 0.75rem; opacity: 0.75; font-style: italic; }
+.markdown-content img { max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 0.5rem 0; }
+
+.message.assistant:has(img) { max-width: 95%; }
 
 @media (max-width: 768px) {
   .chatbot-container { height: 70vh; }

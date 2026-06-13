@@ -40,3 +40,44 @@
   border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
+
+.resume-markdown pre {
+  background: var(--card-bg, #111);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.resume-markdown code {
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 0.875rem;
+}
+
+.resume-markdown pre code {
+  background: none;
+  padding: 0;
+}
+
+.resume-markdown :not(pre) > code {
+  background: var(--card-bg, #111);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.15em 0.4em;
+}
+
+.resume-markdown p:has(> img) {
+  opacity: 1;
+  margin-bottom: 0;
+}
+
+.resume-markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin: 1.5rem 0;
+}

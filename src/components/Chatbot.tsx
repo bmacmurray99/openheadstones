@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+import ClickableImage from './ClickableImage'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -153,7 +154,11 @@ export default function Chatbot({ personName, webhookUrl, resumeContext, gateEna
             <div className="message-content">
               {msg.role === 'assistant' ? (
                 <div className="markdown-content">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                    components={{ img: ({ src, alt }) => <ClickableImage src={src as string | undefined} alt={alt} /> }}
+                  >
                     {msg.content}
                   </ReactMarkdown>
                 </div>

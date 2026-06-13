@@ -72,6 +72,13 @@ export default async function PostPage({
         <header className="post-header">
           <h1>{post.title}</h1>
           {post.date && <time className="post-date">{post.date}</time>}
+          {post.image && (
+            <img
+              src={post.image}
+              alt=""
+              className="post-hero"
+            />
+          )}
         </header>
         <div className="post-content">
           <ResumeMarkdown content={post.content} />
