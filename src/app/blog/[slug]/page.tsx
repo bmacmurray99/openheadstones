@@ -60,7 +60,7 @@ export default async function PostPage({
       authorImageUrl={post.image || avatarUrl}
       breadcrumbLabel={post.breadcrumb}
     />
-    <div className="post-page">
+    <main id="main-content" className="post-page">
       <nav aria-label="Breadcrumb" className="breadcrumb">
         <ol>
           <li><a href="/">{name}</a></li>
@@ -80,7 +80,7 @@ export default async function PostPage({
       <footer className="profile-footer">
         <a href="https://github.com/headstones-app/headstones-open" className="powered-by">Headstones</a>
       </footer>
-    </div>
+    </main>
     </>
   )
 }

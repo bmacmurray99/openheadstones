@@ -1,0 +1,42 @@
+.resume-markdown { line-height: 1.65; }
+
+.resume-markdown h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin: 2.5rem 0 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.resume-markdown h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.2rem;
+}
+
+.resume-markdown p {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  margin-bottom: 0.6rem;
+}
+
+.resume-markdown strong { opacity: 1; color: var(--foreground); font-size: 0.85rem; }
+
+.resume-markdown ul {
+  margin: 0.4rem 0 0.8rem 1.25rem;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.resume-markdown li { margin-bottom: 0.2rem; }
+
+.resume-markdown a { color: var(--accent); }
+
+.resume-markdown hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}

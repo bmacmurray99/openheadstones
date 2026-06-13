@@ -1,0 +1,8 @@
+.resume-page { max-width: 860px; margin: 0 auto; padding: 2rem; min-height: 100vh; }
+
+.resume-header { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.resume-header h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; }
+.resume-headline { font-size: 1.15rem; opacity: 0.7; margin-bottom: 0.75rem; }
+
+.resume-contact { display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.9rem; opacity: 0.65; }
+.resume-contact a { color: var(--accent); }

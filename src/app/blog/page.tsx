@@ -20,8 +20,8 @@ export default function BlogPage() {
   return (
     <>
     <BlogSchema type="index" siteName={name} domain={domain} />
-    <div className="blog-page">
-      <nav className="resume-nav">
+    <main id="main-content" className="blog-page">
+      <nav aria-label="Back to profile" className="resume-nav">
         <a href="/">← {name}</a>
       </nav>
       <header className="blog-header">
@@ -36,7 +36,7 @@ export default function BlogPage() {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
     </>
   )
 }

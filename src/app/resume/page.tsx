@@ -1,6 +1,8 @@
+import './resume.css'
 import type { Metadata } from 'next'
 import { readFileSync } from 'fs'
 import { join } from 'path'
+import { notFound } from 'next/navigation'
 import SchemaLD from '@/components/SchemaLD'
 import ResumeMarkdown from '@/components/ResumeMarkdown'
 import ProfileClientShell from '@/components/ProfileClientShell'
@@ -27,6 +29,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function ResumePage() {
+  if (env('CHATBOT_ENABLED') !== 'true') notFound()
   const name = env('DISPLAY_NAME', 'Your Name')
   const headline = env('HEADLINE')
   const location = env('LOCATION')
@@ -61,8 +64,8 @@ export default function ResumePage() {
         pageType="WebPage"
         pageTitle={`${name} — Resume`}
       />
-      <div className="resume-page">
-        <nav className="resume-nav">
+      <main id="main-content" className="resume-page">
+        <nav aria-label="Back to profile" className="resume-nav">
           <a href="/">← {name}</a>
         </nav>
         <header className="resume-header">
@@ -92,7 +95,7 @@ export default function ResumePage() {
         <footer className="profile-footer">
           <a href="https://github.com/headstones-app/headstones-open" className="powered-by">Headstones</a>
         </footer>
-      </div>
+      </main>
     </>
   )
 }

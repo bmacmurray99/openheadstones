@@ -76,11 +76,11 @@ export default function ProfilePage() {
         domain={domain}
       />
 
-      <div className="profile-page">
+      <main id="main-content" className="profile-page">
         <header className="profile-hero">
           {avatarUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={avatarUrl} alt={name} className="profile-avatar" />
+            <img src={avatarUrl} alt={name} className="profile-avatar" fetchPriority="high" />
           ) : (
             <div className="profile-avatar-initials" aria-hidden="true">{initials}</div>
           )}
@@ -95,7 +95,7 @@ export default function ProfilePage() {
             {mastodonUrl && <a href={mastodonUrl} target="_blank" rel="noopener noreferrer">Mastodon</a>}
             {youtubeUrl && <a href={youtubeUrl} target="_blank" rel="noopener noreferrer">YouTube</a>}
             {website && <a href={website} target="_blank" rel="noopener noreferrer">Website</a>}
-            <a href="/resume">Resume</a>
+            {chatbotEnabled && <a href="/resume">Resume</a>}
             {hasBlog && <a href="/blog">Blog</a>}
           </div>
         </header>
@@ -116,7 +116,7 @@ export default function ProfilePage() {
             <ResumeMarkdown content={resumeMarkdown} />
           </section>
         )}
-      </div>
+      </main>
 
       <footer className="profile-footer">
         <a href="https://github.com/headstones-app/headstones-open" className="powered-by">Headstones</a>
