@@ -1,7 +1,7 @@
 .resume-markdown { line-height: 1.65; }
 
 .resume-markdown h2 {
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--accent);
   border-bottom: 1px solid var(--border);
@@ -12,22 +12,22 @@
 }
 
 .resume-markdown h3 {
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 600;
   margin: 1.5rem 0 0.2rem;
 }
 
 .resume-markdown p {
-  font-size: 0.9rem;
+  font-size: 1.125rem;
   opacity: 0.75;
   margin-bottom: 0.6rem;
 }
 
-.resume-markdown strong { opacity: 1; color: var(--foreground); font-size: 0.85rem; }
+.resume-markdown strong { opacity: 1; color: var(--foreground); font-size: 1.05rem; }
 
 .resume-markdown ul {
   margin: 0.4rem 0 0.8rem 1.25rem;
-  font-size: 0.9rem;
+  font-size: 1.125rem;
   opacity: 0.75;
 }
 
