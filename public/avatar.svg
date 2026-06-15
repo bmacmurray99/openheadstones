@@ -8,5 +8,5 @@
   <circle cx="200" cy="200" r="200" fill="url(#g)"/>
   <text x="200" y="200" dominant-baseline="central" text-anchor="middle"
     font-family="system-ui, -apple-system, sans-serif"
-    font-size="148" font-weight="700" fill="white" letter-spacing="-4">JC</text>
+    font-size="104" font-weight="700" fill="white" letter-spacing="-3">BLM</text>
 </svg>

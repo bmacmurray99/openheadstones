@@ -13,3 +13,7 @@ out/
 # misc
 .DS_Store
 *.pem
+
+# AI agent instructions (local only)
+CLAUDE.md
+AGENTS.md
