@@ -31,7 +31,7 @@ export async function GET() {
   const posts = getAllPosts()
   const hasBlog = posts.length > 0
 
-  const resume = readFileSync(join(process.cwd(), 'resume.md'), 'utf-8')
+  const resume = readFileSync(join(process.cwd(), 'public', 'resume.md'), 'utf-8')
 
   const lines: string[] = []
 

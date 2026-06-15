@@ -54,7 +54,7 @@ export default function ProfilePage() {
   const chatbotWebhookUrl = env('CHATBOT_WEBHOOK_URL')
   const chatbotGateEnabled = env('CHATBOT_GATE') === 'true'
   const chatbotGateFormUrl = env('CHATBOT_GATE_FORM_URL')
-  const resumeMarkdown = readFileSync(join(process.cwd(), 'resume.md'), 'utf-8')
+  const resumeMarkdown = readFileSync(join(process.cwd(), 'public', 'resume.md'), 'utf-8')
   const sendResumeContext = env('CHATBOT_SEND_RESUME_CONTEXT', 'true') !== 'false'
   const resumeContext = sendResumeContext ? resumeMarkdown : ''
   const initials = name.split(' ').slice(0, 2).map((w) => w[0]?.toUpperCase() ?? '').join('')

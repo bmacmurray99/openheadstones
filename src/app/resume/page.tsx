@@ -44,7 +44,7 @@ export default function ResumePage() {
   const calendarUrl = env('CALENDAR_URL')
   const domain = env('SITE_DOMAIN', 'https://yourname.com')
 
-  const content = readFileSync(join(process.cwd(), 'resume.md'), 'utf-8')
+  const content = readFileSync(join(process.cwd(), 'public', 'resume.md'), 'utf-8')
 
   return (
     <>
