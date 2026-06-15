@@ -8,7 +8,6 @@ import { resolveImage } from '@/lib/resolve-image'
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  if (process.env.BLOG_ENABLED !== 'true') return []
   return getAllPosts().map((post) => ({ slug: post.slug }))
 }
 
