@@ -5,6 +5,8 @@ import ResumeMarkdown from '@/components/ResumeMarkdown'
 import BlogSchema from '@/components/BlogSchema'
 import { resolveImage } from '@/lib/resolve-image'
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   if (process.env.BLOG_ENABLED !== 'true') return []
   return getAllPosts().map((post) => ({ slug: post.slug }))
