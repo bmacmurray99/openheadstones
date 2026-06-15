@@ -45,6 +45,58 @@ export default function Chatbot({ personName, webhookUrl, resumeContext, gateEna
     }
   }, [messages])
 
+  useEffect(() => {
+    if (!gateEnabled || gateCleared) return
+    const mc = (document as unknown as { modelContext?: { registerTool?: unknown } }).modelContext
+      ?? (navigator as unknown as { modelContext?: { registerTool?: unknown } }).modelContext
+    if (!mc || typeof (mc as { registerTool?: unknown }).registerTool !== 'function') return
+
+    const controller = new AbortController()
+    const registry = mc as {
+      registerTool: (def: object, opts: { signal: AbortSignal }) => void
+    }
+
+    try {
+      registry.registerTool(
+        {
+          name: 'identify',
+          title: `Identify yourself to chat with ${personName}`,
+          description: `Provide your name and email to unlock the AI chat with ${personName}'s assistant.`,
+          inputSchema: {
+            type: 'object',
+            properties: {
+              name: { type: 'string', description: 'Your full name' },
+              email: { type: 'string', description: 'Your email address' },
+              company: { type: 'string', description: 'Your company or organization (optional)' },
+            },
+            required: ['name', 'email'],
+          },
+          annotations: { readOnlyHint: false, destructiveHint: false },
+          async execute({ name, email, company }: { name: string; email: string; company?: string }) {
+            if (!name.trim()) return { content: [{ type: 'text', text: 'Name is required.' }] }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { content: [{ type: 'text', text: 'A valid email address is required.' }] }
+            setGateName(name.trim())
+            setGateEmail(email.trim())
+            if (company) setGateCompany(company.trim())
+            setVisitorIdentity(name.trim())
+            if (gateFormUrl) {
+              const body = new FormData()
+              body.append('name', name.trim())
+              body.append('email', email.trim())
+              if (company?.trim()) body.append('company', company.trim())
+              fetch(gateFormUrl, { method: 'POST', body }).catch(() => {})
+            }
+            setGateCleared(true)
+            return { content: [{ type: 'text', text: `Welcome, ${name}! You can now chat with ${personName}'s AI assistant.` }] }
+          },
+        },
+        { signal: controller.signal }
+      )
+    } catch { /* WebMCP not available */ }
+
+    return () => controller.abort()
+  }, [gateEnabled, gateCleared, personName, gateFormUrl])
+
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setGateError('')
@@ -111,7 +163,9 @@ export default function Chatbot({ personName, webhookUrl, resumeContext, gateEna
           <label className="gate-label" htmlFor="gate-name">Name <span className="gate-required">*</span></label>
           <input
             id="gate-name"
+            name="name"
             type="text"
+            autoComplete="name"
             value={gateName}
             onChange={(e) => setGateName(e.target.value)}
             placeholder="Jane Smith"
@@ -122,7 +176,9 @@ export default function Chatbot({ personName, webhookUrl, resumeContext, gateEna
           <label className="gate-label" htmlFor="gate-email">Email <span className="gate-required">*</span></label>
           <input
             id="gate-email"
+            name="email"
             type="email"
+            autoComplete="email"
             value={gateEmail}
             onChange={(e) => setGateEmail(e.target.value)}
             placeholder="you@example.com"
@@ -132,7 +188,9 @@ export default function Chatbot({ personName, webhookUrl, resumeContext, gateEna
           <label className="gate-label" htmlFor="gate-company">Company <span className="gate-optional">(optional)</span></label>
           <input
             id="gate-company"
+            name="company"
             type="text"
+            autoComplete="organization"
             value={gateCompany}
             onChange={(e) => setGateCompany(e.target.value)}
             placeholder="Acme Corp"
