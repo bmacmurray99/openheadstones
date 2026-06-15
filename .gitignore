@@ -17,3 +17,6 @@ out/
 # AI agent instructions (local only)
 CLAUDE.md
 AGENTS.md
+
+# Local resume PDF
+resume.pdf
