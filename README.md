@@ -19,7 +19,7 @@ Self-hosted AI resume profile. Add a `resume.md`, set some env vars, deploy anyw
 ## Quick start
 
 ```bash
-git clone https://github.com/headstones-app/headstones-open
+git clone https://github.com/bmacmurray99/openheadstones
 cd headstones-open
 npm install
 

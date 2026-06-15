@@ -86,7 +86,7 @@ export default async function PostPage({
         </div>
       </article>
       <footer className="profile-footer">
-        <a href="https://github.com/headstones-app/headstones-open" className="powered-by">Headstones</a>
+        <a href="https://github.com/bmacmurray99/openheadstones" className="powered-by">Headstones</a>
       </footer>
     </main>
     </>
